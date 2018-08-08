@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CoolStuff index{% endblock %}
+
+{% block body %}
+    <h1>CoolStuff index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Cool</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cool_stuff in cool_stuffs %}
+            <tr>
+                <td>{{ cool_stuff.id }}</td>
+                <td>{{ cool_stuff.name }}</td>
+                <td>{{ cool_stuff.cool ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('cool_stuff_show', {'id': cool_stuff.id}) }}">show</a>
+                    <a href="{{ path('cool_stuff_edit', {'id': cool_stuff.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cool_stuff_new') }}">Create new</a>
+{% endblock %}

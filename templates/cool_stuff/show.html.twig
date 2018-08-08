@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CoolStuff{% endblock %}
+
+{% block body %}
+    <h1>CoolStuff</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cool_stuff.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ cool_stuff.name }}</td>
+            </tr>
+            <tr>
+                <th>Cool</th>
+                <td>{{ cool_stuff.cool ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cool_stuff_index') }}">back to list</a>
+
+    <a href="{{ path('cool_stuff_edit', {'id': cool_stuff.id}) }}">edit</a>
+
+    {{ include('cool_stuff/_delete_form.html.twig') }}
+{% endblock %}

@@ -6,9 +6,20 @@ use App\Entity\CoolStuff;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
+/**
+ * AppFixtures
+ *
+ * Adds 10 CoolStuff objects to DB.
+ */
 class AppFixtures extends Fixture
 {
-    public function load(ObjectManager $manager)
+    /**
+     * load Fixtures
+     *
+     * @param ObjectManager $manager 
+     * @return void
+     */
+    public function load(ObjectManager $manager) : void
     {
         // create 10 CoolStuff's
         for ($i = 0; $i < 10; $i++) {

@@ -19,7 +19,9 @@ class CoolStuffType extends AbstractType
         $builder
             ->add('name')
             ->add('cool')
-            ->add('file', FileType::class)
+            ->add('file', FileType::class, [
+                'required' => false
+            ])
         ;
     }
 

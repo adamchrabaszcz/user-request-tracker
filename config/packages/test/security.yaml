@@ -1,0 +1,27 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory:
+            memory:
+                users:
+                    usertest1:
+                        password: $2y$12$3DXRfMOS5gTzmJAZC3Fd/uqNSVl3nmcJhSDRjtPXJzR4WIzT3yQdS
+                        roles: 'ROLE_USER'
+                        
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+                        
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            http_basic: ~
+            form_login:
+                login_path: login
+                check_path: login
+
+

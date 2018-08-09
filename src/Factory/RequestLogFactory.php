@@ -31,11 +31,11 @@ class RequestLogFactory
         $requestLog->setPostParameters($request->request->all());
         $requestLog->setGetParameters($request->query->all()); 
         $requestLog->setMethod($request->getMethod()); 
-        $requestLog->setFileNames($request->files->get('cool_stuff')['file'] ? [
+        $requestLog->setFileNames(! empty($request->files->get('cool_stuff')['file']) ? [
                 $request->files->get('cool_stuff')['file']->getClientOriginalName(), 
                 $request->files->get('cool_stuff')['file']->getFilename()
                 ] : []);
-        $requestLog->setHttpReferer($request->headers->get('referer'));
+        $requestLog->setHttpReferer($request->headers->get('referer') ?? '');
         
         return $requestLog;
     }

@@ -19,32 +19,20 @@ class RequestLogRepository extends ServiceEntityRepository
         parent::__construct($registry, RequestLog::class);
     }
 
-//    /**
-//     * @return RequestLog[] Returns an array of RequestLog objects
-//     */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return RequestLog[] Returns an array of RequestLog objects
+     */
+    public function findFromLastHour()
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $date = new \DateTime();
+        $date->modify('-1 hour');
 
-    /*
-    public function findOneBySomeField($value): ?RequestLog
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this
+            ->createQueryBuilder('r')
+            ->andWhere('r.createdAt > :date')
+            ->setParameter(':date', $date)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->execute();
     }
-    */
+
 }

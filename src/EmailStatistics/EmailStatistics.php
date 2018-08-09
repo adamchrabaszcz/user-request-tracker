@@ -36,7 +36,7 @@ class EmailStatistics
      */
     public function sendEmail(string $recipient) : ?int
     {
-        $logs = $this->entityManager->getRepository(RequestLog::class)->findAll();
+        $logs = $this->entityManager->getRepository(RequestLog::class)->findFromLastHour();
         
         $message = (new \Swift_Message('Email Statistics!'))
             ->setFrom('test@test.pl')

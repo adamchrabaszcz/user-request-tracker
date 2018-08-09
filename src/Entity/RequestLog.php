@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RequestLogRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class RequestLog
 {
@@ -55,6 +56,11 @@ class RequestLog
      * @ORM\Column(type="string", length=255)
      */
     private $httpReferer;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdAt;
 
     /**
      * GetId
@@ -248,5 +254,37 @@ class RequestLog
         $this->httpReferer = $httpReferer;
 
         return $this;
+    }
+
+    /**
+     * Get CreatedAt
+     *
+     * @return \DateTimeInterface
+     */
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set CreatedAt
+     *
+     * @param DateTimeInterface $createdAt 
+     * @return self
+     */
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+    
+    /**
+     * Gets triggered only on insert
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->createdAt = new \DateTime("now");
     }
 }

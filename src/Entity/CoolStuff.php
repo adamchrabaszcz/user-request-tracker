@@ -26,16 +26,37 @@ class CoolStuff
      */
     private $cool;
 
-    public function getId()
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $file;
+
+    /**
+     * Get Id
+     *
+     * @return int
+     */
+    public function getId() : int
     {
         return $this->id;
     }
 
+    /**
+     * Get Name
+     *
+     * @return string
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * Set Name
+     *
+     * @param string $name 
+     * @return self
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -43,14 +64,48 @@ class CoolStuff
         return $this;
     }
 
+    /**
+     * Get Cool
+     *
+     * @return bool
+     */
     public function getCool(): ?bool
     {
         return $this->cool;
     }
 
+    /**
+     * Set Cool
+     *
+     * @param bool $cool 
+     * @return self
+     */
     public function setCool(?bool $cool): self
     {
         $this->cool = $cool;
+
+        return $this;
+    }
+
+    /**
+     * Get File
+     *
+     * @return string
+     */
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set File
+     *
+     * @param string $file 
+     * @return self
+     */
+    public function setFile(?string $file): self
+    {
+        $this->file = $file;
 
         return $this;
     }

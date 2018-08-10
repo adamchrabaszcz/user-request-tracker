@@ -6,8 +6,7 @@
     <h1>Edit CoolStuff</h1>
 
     {{ include('cool_stuff/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('cool_stuff_index') }}">back to list</a>
-
+    <a href="{{ path('cool_stuff_index') }}" class="btn btn-outline-secondary btn-sm">back to list</a>
+    <br>
     {{ include('cool_stuff/_delete_form.html.twig') }}
 {% endblock %}

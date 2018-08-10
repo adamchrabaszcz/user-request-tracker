@@ -22,9 +22,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('cool_stuff_index') }}">back to list</a>
+    <a href="{{ path('cool_stuff_index') }}" class="btn btn-outline-info btn-sm">back to list</a>
 
-    <a href="{{ path('cool_stuff_edit', {'id': cool_stuff.id}) }}">edit</a>
+    <a href="{{ path('cool_stuff_edit', {'id': cool_stuff.id}) }}" class="btn btn-outline-info btn-sm">edit</a>
 
+    <br><br>
     {{ include('cool_stuff/_delete_form.html.twig') }}
 {% endblock %}

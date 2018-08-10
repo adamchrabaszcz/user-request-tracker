@@ -14,7 +14,7 @@
         <env name="APP_DEBUG" value="1" />
         <env name="APP_SECRET" value="s$cretf0rt3st" />
         <env name="SHELL_VERBOSITY" value="-1" />
-        <env name="DATABASE_URL" value="mysql://pixers:phieQuaechee8rohwaef5ohbaeraeyah@10.0.2.15/user-request-tracker" />
+        <env name="DATABASE_URL" value="mysql://USER:PASS@HOST/user-request-tracker" />
         <!-- define your env variables for the test env here -->
     </php>
 
